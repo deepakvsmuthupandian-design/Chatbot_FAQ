@@ -1,5 +1,7 @@
 # Chatbot_FAQ
 "For security reasons, the Gemini API key is not included in this repository. Please add your own API key in the .env file before running the project." ✅
+
+
 An AI-powered FAQ Chatbot built using **Python**, **Flask**, **Google Gemini API**, **HTML**, **CSS**, and **JavaScript**. This chatbot provides instant and intelligent responses to frequently asked questions through a clean and user-friendly web interface.
 
 ---
