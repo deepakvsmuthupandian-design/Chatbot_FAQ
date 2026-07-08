@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FAQ Chatbot</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-header">
+            <h1>💬AskSmart</h1>
+            <p>Turning questions into solutions.
+            </p>
+        </div>
+
+        <div class="chat-messages" id="chatMessages">
+
+            <div class="message bot-message">
+                <div class="message-content">
+                    Hello! 👋 I am your AskSmart assistant.<br><br>
+
+                    You can ask about:
+                    <ul>
+                        <li>Services</li>
+                        <li>Pricing</li>
+                        <li>Contact details</li>
+                        <li>Working hours</li>
+                        <li>Support</li>
+                        <li>Career goals</li>
+                        <li>Education</li>
+                    </ul>
+
+                    How can I help you?
+                </div>
+            </div>
+
+        </div>
+
+        <div class="chat-input-container">
+
+            <form id="chatForm">
+
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Type your question..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Ask Now</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        const chatForm = document.getElementById("chatForm");
+        const userInput = document.getElementById("userInput");
+        const chatMessages = document.getElementById("chatMessages");
+
+        function addMessage(message, sender) {
+
+            const messageDiv = document.createElement("div");
+
+            messageDiv.classList.add("message");
+
+            if (sender === "user") {
+                messageDiv.classList.add("user-message");
+            } else {
+                messageDiv.classList.add("bot-message");
+            }
+
+            const contentDiv = document.createElement("div");
+
+            contentDiv.classList.add("message-content");
+
+            contentDiv.innerHTML = message.replace(/\n/g, "<br>");
+
+            messageDiv.appendChild(contentDiv);
+
+            chatMessages.appendChild(messageDiv);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        chatForm.addEventListener("submit", async function(event) {
+
+            event.preventDefault();
+
+            const message = userInput.value.trim();
+
+            if (message === "") {
+                return;
+            }
+
+            addMessage(message, "user");
+
+            userInput.value = "";
+
+            try {
+
+                const response = await fetch("/chat", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        message: message
+                    })
+                });
+
+                const data = await response.json();
+
+                addMessage(data.response, "bot");
+
+            } catch (error) {
+
+                addMessage("Something went wrong. Please try again.", "bot");
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
