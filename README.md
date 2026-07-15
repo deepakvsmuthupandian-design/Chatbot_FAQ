@@ -5,7 +5,7 @@ An AI-powered FAQ Chatbot built using **Python**, **Flask**, **Google Gemini API
 
 ---
 
-## ✨ Features
+##  Features
 
 - 💬 AI-powered chatbot using Google Gemini API
 - 🌐 Simple and responsive web interface
@@ -16,7 +16,7 @@ An AI-powered FAQ Chatbot built using **Python**, **Flask**, **Google Gemini API
 
 ---
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - Python
 - Flask
@@ -28,7 +28,7 @@ An AI-powered FAQ Chatbot built using **Python**, **Flask**, **Google Gemini API
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Chatbot_FAQ/
@@ -51,7 +51,7 @@ Chatbot_FAQ/
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -88,7 +88,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 📸 Output
+## Output
 
 - User enters a question.
 - The chatbot processes it using the Gemini API.
@@ -96,7 +96,7 @@ http://127.0.0.1:5000
 
 ---
 
-## 📌 Future Enhancements
+## Future Enhancements
 
 - Voice input support
 - Chat history
